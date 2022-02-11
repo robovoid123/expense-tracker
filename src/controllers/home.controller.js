@@ -1,4 +1,4 @@
-const { Record } = require("../models");
+const { Record, Category } = require("../models");
 const {
   calculateTotal,
   calculateTotalIncome,
@@ -7,7 +7,19 @@ const {
 
 const get = async (req, res) => {
   try {
-    const records = await Record.findAll({ raw: true });
+    let records = await Record.findAll({
+      raw: true,
+      include: {
+        model: Category,
+        attributes: ["name"],
+      },
+    });
+
+    records = records.map((record) => ({
+      ...record,
+      category: record["Category.name"],
+    }));
+
     const total = {
       total: calculateTotal(records),
       income: calculateTotalIncome(records),

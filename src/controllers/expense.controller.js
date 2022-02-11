@@ -1,8 +1,10 @@
-const { Record } = require("../models");
+const { Record, Category } = require("../models");
 
 const get = async (req, res) => {
   try {
-    res.render("expense");
+    const categories = await Category.findAll({ raw: true });
+    console.log(categories);
+    res.render("expense", { categories });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "something went wrong", error });
@@ -11,13 +13,13 @@ const get = async (req, res) => {
 
 const add = async (req, res) => {
   try {
-    const { subject, amount } = req.body;
+    const { subject, amount, category } = req.body;
     const record = await Record.create({
       subject,
       amount: parseFloat(amount),
       type: "expense",
+      categoryId: category,
     });
-    console.log(record);
     res.redirect("/");
   } catch (error) {
     console.log(error);

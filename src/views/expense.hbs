@@ -1,4 +1,4 @@
-<div class="home my-5 p-4">
+<div class="home form-page my-5 p-4">
   <div class="heading"><h2 class="text-center fs-1 fw-bold">
       <i class="fa-solid fa-money-bill-wave px-2"></i>
       Add Expense</h2></div>
@@ -7,6 +7,19 @@
       <div class="mb-3">
         <label for="subject" class="form-label">subject</label>
         <input type="text" class="form-control" id="subject" name="subject" />
+      </div>
+      <div class="mb-3">
+        <label for="categories" class="form-label">categories</label>
+        <select
+          class="form-select"
+          aria-label="categories"
+          id="category"
+          name="category"
+        >
+          {{#each categories}}
+            <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
+        </select
       </div>
       <div class="mb-3">
         <label for="amount" class="form-label">amount</label>
