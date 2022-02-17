@@ -5,6 +5,7 @@ const {
   calculateTotalExpense,
 } = require("../utils/calculateTotal.utils");
 
+// TODO: create admin dashboard
 const get = async (req, res) => {
   try {
     let records = await Record.findAll({

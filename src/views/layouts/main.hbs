@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    {{> _header user}}
-    <div class="container-fluid px-5">
+    {{> _header}}
+    {{> _flash}}
+    <div class="container px-5 mt-4">
       {{{body}}}
     </div>
     {{> _footer}}

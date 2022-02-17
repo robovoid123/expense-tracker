@@ -10,6 +10,7 @@ const get = async (req, res) => {
   }
 };
 
+// TODO: validate input
 const add = async (req, res) => {
   try {
     const { subject, amount, category } = req.body;
@@ -20,6 +21,7 @@ const add = async (req, res) => {
       type: "income",
       categoryId: category,
     });
+    req.flash("success", "income added successfully");
     res.redirect("/");
   } catch (error) {
     console.log(error);

@@ -30,6 +30,7 @@ const loginUser = async (req, res) => {
     if (!userInDB || !(await userInDB.validPassword(body.password))) {
       // user not found or password not match
       const { password, ...form } = body;
+      req.flash("danger", "invalid credentials");
       return res.render("login", { form });
     }
 
@@ -46,6 +47,7 @@ const loginUser = async (req, res) => {
       maxAge: 1800000,
     });
 
+    req.flash("success", "user successfully logged in");
     res.redirect("/");
   } catch (error) {
     console.log(error);
@@ -81,6 +83,7 @@ const signupUser = async (req, res) => {
     // create user
     await User.create(userData);
     // redirect to login
+    req.flash("success", "user created successfully");
     res.redirect("/auth/login");
   } catch (error) {
     console.log(error);

@@ -8,12 +8,17 @@ const checkAuth = (userRole) => {
     }
     const decoded = await validateTokenAsync(req.cookies["auth-token"]);
     if (decoded.error) {
-      return res.json(decoded);
+      req.flash("danger", "authorization error");
+      const backUrl = req.header("Referer") || "/";
+      res.redirect(backUrl);
     }
     if (userRole && decoded.data.role !== userRole) {
-      return res.json({ error: "not authorized" });
+      req.flash("danger", "not authorized");
+      const backUrl = req.header("Referer") || "/";
+      res.redirect(backUrl);
     }
     req.user = decoded;
+    res.locals.user = decoded;
     return next();
   };
 };

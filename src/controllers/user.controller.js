@@ -1,5 +1,7 @@
 const { User } = require("../models");
 
+// TODO: user profile
+// TODO: user update
 const get = async (req, res) => {
   try {
     res.render("user-profile");

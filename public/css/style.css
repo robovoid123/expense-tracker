@@ -6,14 +6,13 @@ body {
 }
 
 .header {
-  height: 80px;
   background-color: #ffffff !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1.5rem 0 !important;
 }
 
-.home {
+.box {
   background-color: #ffffff;
-  margin-top: calc(80px + 2rem) !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
@@ -21,7 +20,4 @@ body {
 .form-page {
   max-width: 600px !important;
   margin: auto;
-}
-
-.sign-up-page {
 }
