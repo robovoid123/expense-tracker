@@ -1,0 +1,136 @@
+<div class="home container sign-up-page my-5 p-4">
+  <div class="heading"><h2 class="text-center fs-1 fw-bold">
+      <i class="fa-solid fa-money-bill-wave px-2"></i>
+      Sign up</h2></div>
+  <div class="">
+    <form action="/auth/sign-up" method="POST">
+      <div class="row">
+        <div class="col mb-3">
+          <label for="name" class="form-label">name</label>
+          <div class="input-group has-validation">
+            <input
+              type="text"
+              {{#if errors.name}}
+              class="form-control is-invalid"
+              {{else}}
+              class="form-control"
+              {{/if}}
+              id="name"
+              name="name"
+              value="{{form.name}}"
+              required
+            />
+            <div class="invalid-feedback">
+              {{#if errors.name}}
+                {{#each errors.name}}
+                  <p>{{this}}</p>
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="col mb-3">
+          <label for="email" class="form-label">email</label>
+          <div class="input-group has-validation">
+            <input
+              type="email"
+              {{#if errors.email}}
+              class="form-control is-invalid"
+              {{else}}
+              class="form-control"
+              {{/if}}
+              id="email"
+              name="email"
+              value="{{form.email}}"
+              required
+            />
+            <div class="invalid-feedback">
+              {{#if errors.email}}
+                {{#each errors.email}}
+                  <p>{{this}}</p>
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col">
+          <label for="password" class="form-label">password</label>
+          <div class="input-group has-validation">
+            <input
+              type="password"
+              {{#if errors.password}}
+              class="form-control is-invalid"
+              {{else}}
+              class="form-control"
+              {{/if}}
+              id="password"
+              name="password"
+              value="{{form.password}}"
+              required
+            />
+            <div class="invalid-feedback">
+              {{#if errors.password}}
+                {{#each errors.password}}
+                  <p>{{this}}</p>
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col">
+          <label for="password2" class="form-label">retype password</label>
+          <div class="input-group has-validation">
+            <input
+              type="password"
+              {{#if errors.password2}}
+              class="form-control is-invalid"
+              {{else}}
+              class="form-control"
+              {{/if}}
+              id="password2"
+              name="password2"
+              value="{{form.password2}}"
+              required
+            />
+            <div class="invalid-feedback">
+              {{#if errors.password2}}
+                {{#each errors.password2}}
+                  <p>{{this}}</p>
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-6">
+          <label for="address" class="form-label">address</label>
+          <div class="input-group has-validation">
+            <input
+              type="address"
+              {{#if errors.address}}
+              class="form-control is-invalid"
+              {{else}}
+              class="form-control"
+              {{/if}}
+              id="address"
+              name="address"
+              value="{{form.address}}"
+              required
+            />
+            <div class="invalid-feedback">
+              {{#if errors.address}}
+                {{#each errors.address}}
+                  <p>{{this}}</p>
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+  </div>
+</div>

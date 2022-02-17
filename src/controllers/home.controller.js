@@ -8,6 +8,9 @@ const {
 const get = async (req, res) => {
   try {
     let records = await Record.findAll({
+      where: {
+        userId: req.user.sub,
+      },
       raw: true,
       include: {
         model: Category,

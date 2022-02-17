@@ -14,6 +14,7 @@ const add = async (req, res) => {
   try {
     const { subject, amount, category } = req.body;
     const record = await Record.create({
+      userId: req.user.sub,
       subject,
       amount: parseFloat(amount),
       type: "income",

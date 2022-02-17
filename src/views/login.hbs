@@ -1,0 +1,31 @@
+<div class="home form-page my-5 p-4">
+  <div class="heading"><h2 class="text-center fs-1 fw-bold">
+      <i class="fa-solid fa-money-bill-wave px-2"></i>
+      Login</h2></div>
+  <div class="">
+    <form action="/auth/login" method="POST">
+      <div class="mb-3">
+        <label for="email" class="form-label">email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          value="{{form.email}}"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">login</button>
+    </form>
+  </div>
+</div>

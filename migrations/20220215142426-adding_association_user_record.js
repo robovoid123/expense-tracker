@@ -10,11 +10,11 @@ module.exports = {
      */
     return queryInterface.addColumn(
       "records", // name of Source model
-      "categoryId", // name of the key we're adding
+      "userId", // name of the key we're adding
       {
         type: Sequelize.INTEGER,
         references: {
-          model: "categories", // name of Target model
+          model: "users", // name of Target model
           key: "id", // key in Target model that we're referencing
         },
         onDelete: "SET NULL",
@@ -31,7 +31,7 @@ module.exports = {
      */
     return queryInterface.removeColumn(
       "records", // name of Source model
-      "categoryId" // key we want to remove
+      "userId" // key we want to remove
     );
   },
 };
