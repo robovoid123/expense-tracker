@@ -34,18 +34,26 @@ const loginUser = async (req, res) => {
       return res.render("login", { form });
     }
 
-    const payload = {
-      sub: userInDB.id,
+    // const payload = {
+    //   sub: userInDB.id,
+    //   email: userInDB.email,
+    //   role: userInDB.role,
+    // };
+
+    // const token = await generateTokenAsync(payload);
+
+    // res.cookie("auth-token", token, {
+    //   httpOnly: true,
+    //   maxAge: 1800000,
+    // });
+
+    const session = req.session;
+    session.user = {
+      id: userInDB.id,
+      name: userInDB.name,
       email: userInDB.email,
       role: userInDB.role,
     };
-
-    const token = await generateTokenAsync(payload);
-
-    res.cookie("auth-token", token, {
-      httpOnly: true,
-      maxAge: 1800000,
-    });
 
     req.flash("success", "user successfully logged in");
     res.redirect("/");
@@ -93,7 +101,11 @@ const signupUser = async (req, res) => {
 
 const logoutUser = async (req, res) => {
   try {
-    res.cookie("auth-token", "", { expires: new Date(0) });
+    // res.cookie("auth-token", "", { expires: new Date(0) });
+    res.session.destroy((err) => {
+      throw new Error(err);
+    });
+
     res.redirect("/auth/login");
   } catch (error) {
     console.log(error);

@@ -12,7 +12,7 @@ const { checkAuth } = require("../middleware/auth.middleware");
 router.get("/", checkAuth(), homeController.get);
 router.use("/income", checkAuth(), incomeRouter);
 router.use("/expense", checkAuth(), expenseRouter);
-router.use("/user", checkAuth(), userRouter);
+router.use("/user", checkAuth("user"), userRouter);
 router.use("/auth", authRouter);
 
 module.exports = router;

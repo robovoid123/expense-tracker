@@ -10,7 +10,7 @@ const get = async (req, res) => {
   try {
     let records = await Record.findAll({
       where: {
-        userId: req.user.sub,
+        userId: req.user.id,
       },
       raw: true,
       include: {

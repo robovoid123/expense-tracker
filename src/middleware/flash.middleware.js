@@ -17,7 +17,6 @@ module.exports = {
     }
 
     if (Object.keys(flash).length === 0) flash = null;
-    console.log(flash, "message");
     res.locals.flash = flash;
     next();
   },
